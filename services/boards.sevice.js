@@ -1,16 +1,22 @@
 const Board = require('../model/board.model');
 const escapeRegex = require('../utils/escapseRegex')
 
-module.exports= {
-	getAllBoards: async() => {
-		let res = await Board.find();
-		return res
+module.exports = {
+	getAllBoards: () => {
+		return res = Board.find();
 	},
+	getBoardsByUserId: (userId) => {
+		return res = Board.find({ authorId: userId });
 
-	getBoardsByUserId: async(userId) => {
-		let res = await Board.find({authorId: userId});
-		return res
 	},
+	addBoard: (data) => {
 
+	},
+	editBoard: (data) => {
+
+	},
+	deleteBoard: (data) => {
+
+	},
 }
 

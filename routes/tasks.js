@@ -1,12 +1,12 @@
 const express = require('express');
 
-const taskService = require('../services/tasks.sevice');
+const taskController = require('../controllers/tasks.controller');
 
 const router = express.Router();
 
 /* GET tasks listing. */
-router.get('/', function (req, res, next) {
-  res.json({ tasks: taskService.getAllTask() });
-});
+router.get('/', taskController.getAll);
+
+router.get('/detail', taskController.getOne);
 
 module.exports = router;
