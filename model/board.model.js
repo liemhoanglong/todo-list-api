@@ -13,13 +13,13 @@ const boardSchema = new mongoose.Schema({
         type: Date,
         default: Date.now()
     },
-    status: {
+    isDone: {
         type: Boolean,
-        default: true
+        default: false
     },
     isShare: {
         type: Boolean,
-        default: true
+        default: false
     },
 });
 

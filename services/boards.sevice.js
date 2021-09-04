@@ -1,22 +1,36 @@
 const Board = require('../model/board.model');
-const escapeRegex = require('../utils/escapseRegex')
 
 module.exports = {
-	getAllBoards: () => {
+	getAll: () => {
 		return res = Board.find();
 	},
-	getBoardsByUserId: (userId) => {
-		return res = Board.find({ authorId: userId });
-
+	getBoardsByUserId: (authorId) => {
+		return res = Board.find({ authorId });
 	},
-	addBoard: (data) => {
-
+	getOne: (boardId) => {
+		return res = Board.findById({ boardId });
 	},
-	editBoard: (data) => {
-
+	getBoardsByTitle: (title) => {
+		return res = Board.find({ title });
 	},
-	deleteBoard: (data) => {
-
+	create: async (title, authorId) => {
+		const newBoard = new Board({
+			title,
+			authorId
+		});
+		return await newBoard.save();
+	},
+	update: async (boardId, title) => {
+		let boardUpdated = await Board.findById(boardId);
+		boardUpdated.title = title;
+		return await boardUpdated.save();
+	},
+	changeIsDone: async (boardId) => {
+		let boardUpdated = await Board.findById(boardId);
+		boardUpdated.isDone = !boardUpdated.isDone;
+		return await boardUpdated.save();
+	},
+	delete: async (boardId) => {// delete boards will delete all task relative
+		return await Board.deleteOne({ _id: boardId });
 	},
 }
-

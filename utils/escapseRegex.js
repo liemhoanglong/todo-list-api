@@ -1,3 +1,3 @@
-module.exports.escapseRegex = (text) => {
+module.exports = (text) => {
     return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
 }
