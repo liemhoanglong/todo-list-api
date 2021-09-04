@@ -9,7 +9,7 @@ const taskSchema = new mongoose.Schema({
         type: Date,
         default: Date.now()
     },
-    boards: { 
+    boardId: { 
         type: mongoose.Schema.Types.ObjectId, 
         ref: "board" 
     },

@@ -1,12 +1,12 @@
 const express = require('express');
 
-const userService = require('../services/users.sevice');
+const boardService = require('../services/boards.sevice');
 
 const router = express.Router();
 
-/* GET users listing. */
+/* GET boards listing. */
 router.get('/', function (req, res, next) {
-  res.json({ users: userService.getAllUsers() });
+  res.json({ boards: boardService.getAllBoards() });
 });
 
 module.exports = router;

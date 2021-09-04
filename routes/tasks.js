@@ -1,12 +1,12 @@
 const express = require('express');
 
-const userService = require('../services/users.sevice');
+const taskService = require('../services/tasks.sevice');
 
 const router = express.Router();
 
-/* GET users listing. */
+/* GET tasks listing. */
 router.get('/', function (req, res, next) {
-  res.json({ users: userService.getAllUsers() });
+  res.json({ tasks: taskService.getAllTask() });
 });
 
 module.exports = router;
