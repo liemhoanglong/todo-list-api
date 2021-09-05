@@ -27,7 +27,7 @@ module.exports = {
             res.json({ task });
         }
         else
-            res.json({ msg: 'This task is not belong to user' });
+            res.json({ msg: 'This task is not belong to user!' });
     },
     update: async (req, res) => {
         req.user = '61337e77bb4f3658bc1f2b57';
@@ -36,11 +36,11 @@ module.exports = {
             if (task)
                 res.json({ task });
             else
-                res.json({ msg: 'User is not author' });
+                res.json({ msg: 'User is not author!' });
         }
         catch (err) {
             console.log(err)
-            res.json({ err: 'can not update task' });
+            res.json({ err: 'Can not update task!' });
         }
     },
     changeIsDone: async (req, res) => {
@@ -50,11 +50,11 @@ module.exports = {
             if (task)
                 res.json({ task });
             else
-                res.json({ msg: 'User is not author' });
+                res.json({ msg: 'User is not author!' });
         }
         catch (err) {
             console.log(err)
-            res.json({ err: 'can not change task' });
+            res.json({ err: 'Can not change task!' });
         }
     },
     delete: async (req, res) => {
@@ -64,11 +64,11 @@ module.exports = {
             if (resultDelTask)
                 res.json({ msg: `Delete task success` });
             else
-                res.json({ msg: 'No task matched' });
+                res.json({ msg: 'No task matched!' });
         }
         catch (err) {
             console.log(err)
-            res.json({ err: 'can not delete task' });
+            res.json({ err: 'Can not delete task!' });
         }
     },
 }

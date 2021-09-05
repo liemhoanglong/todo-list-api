@@ -56,11 +56,11 @@ module.exports = {
                     res.json({ msg: `Delete board success, No task delete` });
             }
             else
-                res.json({ msg: 'No board matched' });
+                res.json({ msg: 'No board matched!' });
         }
         catch (err) {
             console.log(err)
-            res.json({ err: 'can not delete board' });
+            res.json({ err: 'Can not delete board!' });
         }
     },
 }

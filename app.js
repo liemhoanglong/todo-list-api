@@ -5,7 +5,8 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require("mongoose");
-const cors = require('cors')
+const cors = require('cors');
+// const passport = require('passport');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -13,7 +14,10 @@ const boardsRouter = require('./routes/boards');
 const tasksRouter = require('./routes/tasks');
 
 const app = express();
-app.use(cors())
+app.use(cors());
+
+//passport middlewares
+// app.use(passport.initialize());
 
 // connect database
 mongoose
