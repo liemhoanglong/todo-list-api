@@ -9,17 +9,16 @@ const taskSchema = new mongoose.Schema({
         type: Date,
         default: Date.now()
     },
-    boardId: { 
-        type: mongoose.Schema.Types.ObjectId, 
-        ref: "board" 
+    boardId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "board"
     },
-    status: {
+    isDone: {
         type: Boolean,
-        default: true
+        default: false
     },
     imageList: {
-      type: Array,
-      required: true,
+        type: Array
     },
 });
 

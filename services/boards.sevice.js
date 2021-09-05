@@ -7,8 +7,14 @@ module.exports = {
 	getBoardsByUserId: (authorId) => {
 		return res = Board.find({ authorId });
 	},
-	getOne: (boardId) => {
-		return res = Board.findById({ boardId });
+	getBoard: (boardId) => {
+		return res = Board.findById(boardId);
+	},
+	getBoardByUserId: (boardId, userId) => {
+		const board = Board.findById(boardId);
+		if (board.authorId == userId)
+			return res = board
+		return;
 	},
 	getBoardsByTitle: (title) => {
 		return res = Board.find({ title });
@@ -20,17 +26,26 @@ module.exports = {
 		});
 		return await newBoard.save();
 	},
-	update: async (boardId, title) => {
+	update: async (boardId, title, userId) => {
 		let boardUpdated = await Board.findById(boardId);
-		boardUpdated.title = title;
-		return await boardUpdated.save();
+		if (boardUpdated.authorId == userId) {
+			boardUpdated.title = title;
+			return await boardUpdated.save();
+		}
+		return;
 	},
-	changeIsDone: async (boardId) => {
+	changeIsDone: async (boardId, userId) => {
 		let boardUpdated = await Board.findById(boardId);
-		boardUpdated.isDone = !boardUpdated.isDone;
-		return await boardUpdated.save();
+		if (boardUpdated.authorId == userId) {
+			boardUpdated.isDone = !boardUpdated.isDone;
+			return await boardUpdated.save();
+		}
+		return;
 	},
-	delete: async (boardId) => {// delete boards will delete all task relative
-		return await Board.deleteOne({ _id: boardId });
+	delete: async (boardId, userId) => { //Need to check author before delete 
+		let board = await Board.findById(boardId);
+		if (board.authorId == userId)
+			return await board.deleteOne({ _id: boardId });
+		return;
 	},
 }
