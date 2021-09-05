@@ -6,22 +6,26 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require("mongoose");
 const cors = require('cors');
-// const passport = require('passport');
+const passport = require('passport');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const boardsRouter = require('./routes/boards');
 const tasksRouter = require('./routes/tasks');
 
+require('./middlewares/passport'); //config passport in here local|jwt|google|facebook
+require("./middlewares/auth.middleware");
+
 const app = express();
 app.use(cors());
 
 //passport middlewares
-// app.use(passport.initialize());
+app.use(passport.initialize());
 
 // connect database
 mongoose
   .connect(process.env.DB_HOST, {
+    useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
